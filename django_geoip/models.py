@@ -9,6 +9,7 @@ from django.db.models.query import QuerySet
 
 # keep imports
 from . import compat
+from .settings import geoip_settings, ipgeobase_settings # noqa
 
 
 class Country(models.Model):
