@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import socket
 import struct
 from abc import ABCMeta
@@ -6,15 +5,12 @@ from abc import ABCMeta
 from django.db import models
 from django.db.models.base import ModelBase
 from django.utils.translation import ugettext_lazy as _
-from django.utils.six import python_2_unicode_compatible
 from django.db.models.query import QuerySet
 
 # keep imports
 from . import compat
-from .settings import geoip_settings, ipgeobase_settings
 
 
-@python_2_unicode_compatible
 class Country(models.Model):
     """ One country per row, contains country code and country name.
     """
@@ -29,7 +25,6 @@ class Country(models.Model):
         verbose_name_plural = _('countries')
 
 
-@python_2_unicode_compatible
 class Region(models.Model):
     """ Region is a some geographical entity that belongs to one Country,
         Cities belong to one specific Region.
@@ -47,7 +42,6 @@ class Region(models.Model):
         unique_together = (('country', 'name'), )
 
 
-@python_2_unicode_compatible
 class City(models.Model):
     """ Geopoint that belongs to the Region and Country.
         Identified by name and region.
